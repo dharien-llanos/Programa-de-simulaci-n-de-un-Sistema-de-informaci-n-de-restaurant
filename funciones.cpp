@@ -21,6 +21,17 @@ void agregarOrden(const string& categoria, const string menu[],const float preci
         ordenes[numOrdenes].categoria=categoria;
         numOrdenes++;
     } else {
-        cout <<"Opción Incorrecta."<<endl;
+        cout <<"Opcion Incorrecta."<<endl;
+    }
+}
+
+void mostrarOrdenes(Orden ordenes[], int numOrdenes) {
+    if (numOrdenes == 0) {
+        cout << "No ha seleccionado ningun plato" << endl;
+    } else {
+        cout << "Platos seleccionados:" << endl;
+        for (int i = 0; i < numOrdenes; i++) {
+            cout << i + 1 << ") " << ordenes[i].nombre << " (" << ordenes[i].categoria << "): $" << ordenes[i].precio << endl;
+        }
     }
 }

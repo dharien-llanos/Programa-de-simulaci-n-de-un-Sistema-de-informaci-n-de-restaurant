@@ -1,28 +1,26 @@
-#include <iostream>
 #include "funciones.h"
-#include "orden.h"
+#include <iostream>
+
 using namespace std;
 
-void mostrarCarta(string categoria, string platos[], float precios[], int numPlatos) {
+void mostrarCarta(const string& categoria, const string menu[], const float precios[], int tamano) {
     cout << "\n" << categoria << ":" << endl;
-    for (int i = 0; i < numPlatos; i++) {
-        cout << "  " << i + 1 << ") ";
-        cout << platos[i] << " - Precio: $" << precios[i] << endl;
+    for (int i=0;i<tamano;i++) {
+        cout<<"  "<<i + 1<<") "<<menu[i]<<" - Precio: $"<<precios[i]<< endl;
     }
 }
 
-void agregarOrden(string categoria, string menu[], float precios[], int maxPlatos, Orden ordenes[], int &numOrdenes, float &total) {
-    mostrarCarta(categoria, menu, precios, maxPlatos);
+void agregarOrden(const string& categoria, const string menu[],const float precios[], int tamano, Orden ordenes[], int& numOrdenes) {
+    mostrarCarta(categoria,menu,precios,tamano);
     int eleccion;
-    cout << "Elija el " << categoria << " que desea ordenar: ";
-    cin >> eleccion;
-    if ( 1 <= eleccion && eleccion <= maxPlatos) {
-        ordenes[numOrdenes].nombre = menu[eleccion - 1];
-        ordenes[numOrdenes].precio = precios[eleccion - 1];
-        ordenes[numOrdenes].categoria = categoria;
+    cout << "Elija el "<< categoria <<" que desea ordenar: ";
+    cin>>eleccion;
+    if (eleccion>=1 && eleccion<=tamano) {
+        ordenes[numOrdenes].nombre=menu[eleccion - 1];
+        ordenes[numOrdenes].precio=precios[eleccion - 1];
+        ordenes[numOrdenes].categoria=categoria;
         numOrdenes++;
-        total += precios[eleccion - 1];
     } else {
-        cout << "Opcion Incorrecta." << endl;
+        cout <<"Opción Incorrecta."<<endl;
     }
 }

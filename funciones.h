@@ -4,8 +4,7 @@
 #include <string>
 #include "orden.h"
 using namespace std;
+void mostrarCarta(const string& categoria, const string menu[], const float precios[], int tamano);
+void agregarOrden(const string& categoria, const string menu[], const float precios[], int tamano, Orden ordenes[], int& numOrdenes);
 
-void mostrarCarta(string categoria, string platos[], float precios[], int numPlatos);
-void agregarOrden(string categoria, string menu[], float precios[], int maxPlatos, Orden ordenes[], int &numOrdenes, float &total);
-
-#endif
+#endif 

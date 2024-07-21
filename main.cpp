@@ -23,7 +23,7 @@ int main() {
 
     string menuPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {
         "Filete Mignon con Reduccion de Vino Tinto y Esparragos Gratinados",
-        "Salmon en Papillote con Verduras de Temporada",	
+        "Salmon en Papillote con Verduras de Temporada",    
         "Rack de Cordero con Costra de Hierbas y Pure de Batata",
         "Pato a la Naranja con Risotto de Champinones",
         "Ravioles de Trufa Negra con Crema de Parmesano"
@@ -32,7 +32,6 @@ int main() {
     
     Orden ordenes[MAX_ORDENES];
     int numOrdenes = 0;
-    float total = 0.0;
 
     int opcion;
     do {
@@ -50,24 +49,22 @@ int main() {
                 cout << "Entradas:" << endl;
                 mostrarCarta("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS);
                 cout << "\nPlatos Principales:" << endl;
-                mostrarCarta("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES);
+                mostrarCarta("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES);    
                 system("pause");
                 break;
             case 2:
                 system("cls");
                 cout << "Agregar orden:" << endl;
-                agregarOrden("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS, ordenes, numOrdenes, total);
-                agregarOrden("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES, ordenes, numOrdenes, total);
-               
-               
-                cout << "Orden agregada. Total: $" << total << endl;
+                agregarOrden("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS, ordenes, numOrdenes);
+                agregarOrden("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES, ordenes, numOrdenes);
+                cout << "Orden agregada." << endl;
                 system("pause");
                 break;
             case 3:
                 cout << "* * * * * Saliendo del programa * * * * * " << endl;
                 break;
             default:
-                cout << "\nOpcion Incorrecta." << endl << endl;
+                cout << "\nOpción Incorrecta." << endl << endl;
                 system("pause");
         }
     } while (opcion != 3);

@@ -39,7 +39,8 @@ int main() {
         cout << "--- Restaurante ---" << endl;
         cout << "1. Mostrar carta" << endl;
         cout << "2. Agregar orden" << endl;
-        cout << "3. Salir" << endl;
+        cout << "3. Mostrar orden" << endl;
+        cout << "4. Salir" << endl;
         cout << "Ingrese una opcion: ";
         cin >> opcion;
 
@@ -61,6 +62,11 @@ int main() {
                 system("pause");
                 break;
             case 3:
+            	system("cls");
+                 mostrarOrdenes(ordenes, numOrdenes);
+                system("pause");
+            	break;
+            case 4:
                 cout << "* * * * * Saliendo del programa * * * * * " << endl;
                 break;
             default:

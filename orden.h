@@ -3,6 +3,7 @@
 
 #include <string>
 using namespace std;
+
 struct Orden {
     string nombre;
     float precio;

@@ -33,7 +33,7 @@ int main() {
 
     int opcion;
     do {
-        cout<<"----- Restaurante -----"<<endl;
+        cout<<"------ Restaurante ------"<<endl;
         cout<<"1. Mostrar carta"<<endl;
         cout<<"2. Agregar orden"<<endl;
         cout<<"3. Mostrar orden"<<endl;

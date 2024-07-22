@@ -23,7 +23,7 @@ int main() {
         "arros con pollo",
         "lomo saltado",    
         "picante a la tacneia",
-        "chuleta frita"
+        "chuleta frita."
        
     };
     float preciosPlatosPrincipales[MAX_PLATOS_PRINCIPALES]={45.0, 35.0, 50.0, 40.0};

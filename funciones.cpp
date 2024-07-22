@@ -25,12 +25,30 @@ void agregarOrden(const string& categoria, const string menu[],const float preci
 }
 
 void mostrarOrdenes(Orden ordenes[], int numOrdenes) {
-    if (numOrdenes==0) {
-        cout<<"No ha seleccionado ningun plato"<<endl;
+	float suma = 0;
+	float descuento;
+    if (numOrdenes == 0) {
+        cout << "No ha seleccionado ningun plato" << endl;
     } else {
-        cout<<"Platos seleccionados:"<<endl;
-        for (int i=0;i<numOrdenes;i++) {
-            cout<<i+1<<") "<<ordenes[i].nombre<<" ("<<ordenes[i].categoria<<"): $"<<ordenes[i].precio<<endl;
+        cout << "Platos seleccionados:" << endl;
+        for (int i = 0; i < numOrdenes; i++) {
+            cout << i + 1 << ") " << ordenes[i].nombre << " (" << ordenes[i].categoria << "): $" << ordenes[i].precio << endl;
+            suma += ordenes[i].precio;
         }
+        cout <<"Total de consumo: $" <<suma<< endl;
+        if (numOrdenes > 10) {
+            cout << "Descuento 20% al total de consumo" << endl;
+            descuento = suma * 0.20;
+        } else if (numOrdenes > 5) {
+            cout << "Descuento 10% al total de consumo" << endl;
+            descuento = suma * 0.10;
+        } else {
+            cout << "Descuento 5% al total de consumo" << endl;
+            descuento = suma * 0.05;
+        }
+        int totalfinal = suma - descuento; 
+         cout << "Total con descuento del consumo: $" << totalfinal << endl;
+         cout << endl;
+         cout << "De las manos del chef, nacen obras maestras que conquistan el alma " << endl;
     }
 }

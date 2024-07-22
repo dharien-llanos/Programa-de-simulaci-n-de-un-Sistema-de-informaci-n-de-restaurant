@@ -34,3 +34,26 @@ void mostrarOrdenes(Orden ordenes[], int numOrdenes) {
         }
     }
 }
+
+void borrarOrden(Orden ordenes[], int &numOrdenes) {
+    if (numOrdenes == 0) {
+        cout<<"No hay órdenes para borrar."<<endl;
+        return;
+    }
+    
+    int indice;
+    cout<<"Ingrese el índice de la orden que desea borrar (1-"<<numOrdenes<<"): ";
+    cin>>indice;
+
+    if (indice<1||indice>numOrdenes) {
+        cout<<"Índice inválido."<<endl;
+        return;
+    }
+
+    for (int i=indice-1; i<numOrdenes-1; ++i) {
+        ordenes[i]=ordenes[i + 1];
+    }
+
+    --numOrdenes;
+    cout<<"Orden borrada exitosamente."<<endl;
+}

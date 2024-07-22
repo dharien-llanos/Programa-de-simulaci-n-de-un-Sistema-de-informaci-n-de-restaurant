@@ -37,8 +37,8 @@ int main() {
         cout<<"1. Mostrar carta"<<endl;
         cout<<"2. Agregar orden"<<endl;
         cout<<"3. Mostrar orden"<<endl;
-        cout<<"4. Salir"<<endl;
-        cout<<"Ingrese una opcion: ";
+        cout<<"4. Borrar orden"<<endl;
+        cout<<"5. Salir"<<endl;
         cin>>opcion;
 
         switch (opcion) {
@@ -68,12 +68,15 @@ int main() {
                 mostrarOrdenes(ordenes, numOrdenes);
                 break;
             case 4:
+                borrarOrden(ordenes, numOrdenes);
+                break;     
+            case 5:
                 cout<<"* * * * * Saliendo del programa * * * * *"<<endl;
                 break;
             default:
                 cout<<"\nOpcion Incorrecta."<<endl;
         }
-    } while (opcion!=4);
+    } while (opcion!=5);
 
     return 0;
 }

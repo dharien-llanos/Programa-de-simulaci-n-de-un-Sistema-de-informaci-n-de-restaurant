@@ -37,7 +37,8 @@ int main() {
         cout<<"1. Mostrar carta"<<endl;
         cout<<"2. Agregar orden"<<endl;
         cout<<"3. Mostrar orden"<<endl;
-        cout<<"4. Salir"<<endl;
+        cout<<"4. Borrar orden"<<endl;
+        cout<<"5. Salir"<<endl;
         cout<<"Ingrese una opcion: ";
         cin>>opcion;
 
@@ -68,12 +69,26 @@ int main() {
                 mostrarOrdenes(ordenes, numOrdenes);
                 break;
             case 4:
+                if (numOrdenes>0) {
+                    int indice;
+                    cout<<"Ingrese el numero de la orden a borrar (1-"<<numOrdenes<<"): ";
+                    cin>>indice;
+                    if (indice>=1 && indice<=numOrdenes) {
+                        borrarOrden(ordenes, numOrdenes, indice-1);
+                    } else {
+                        cout<<"Numero de orden invalido."<<endl;
+                    }
+                } else {
+                    cout<<"No hay ordenes para borrar."<<endl;
+                }
+                break;    
+            case 5:
                 cout<<"* * * * * Saliendo del programa * * * * *"<<endl;
                 break;
             default:
                 cout<<"\nOpcion Incorrecta."<<endl;
         }
-    } while (opcion!=4);
+    } while (opcion!=5);
 
     return 0;
 }

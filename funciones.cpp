@@ -52,3 +52,11 @@ void mostrarOrdenes(Orden ordenes[], int numOrdenes) {
          cout << "De las manos del chef, nacen obras maestras que conquistan el alma " << endl;
     }
 }
+
+void borrarOrden(Orden ordenes[], int &numOrdenes, int indice) {
+    for (int i=indice; i<numOrdenes-1; i++) {
+        ordenes[i]=ordenes[i+1];
+    }
+    numOrdenes--;
+    cout<<"Orden borrada."<<endl;
+}

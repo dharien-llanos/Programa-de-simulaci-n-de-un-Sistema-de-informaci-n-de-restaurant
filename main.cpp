@@ -83,7 +83,7 @@ int main() {
                 }
                 break;    
             case 5:
-                cout<<"* * * * * Saliendo del programa * * * * *"<<endl;
+                cout<<"* * * * * * Saliendo del programa * * * * * *"<<endl;
                 break;
             default:
                 cout<<"\nOpcion Incorrecta."<<endl;

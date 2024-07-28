@@ -5,14 +5,15 @@
 using namespace std;
 
 int main() {
-    int diaDeLaSemana = detectarDia();
+    int diaDeLaSemana=detectarDia();
+
     
     switch (diaDeLaSemana) {
         case 1:
             dia1();
             break;
         default:
-            cout << "No hay un menu definido para hoy " << endl;
+            cout<<"No hay un menu definido para hoy "<<endl;
     }
 
     return 0;

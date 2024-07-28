@@ -155,7 +155,7 @@ void dia1() {
             case 4:
                 if (numOrdenes>0) {
                     int indice;
-                    cout<<"Ingrese el numero de la orden a borrar (1-" << numOrdenes << "): ";
+                    cout<<"Ingrese el numero de la orden a borrar (1-" << numOrdenes << ") : ";
                     cin>>indice;
                     if (indice>=1 && indice<=numOrdenes) {
                         borrarOrden(ordenes, numOrdenes,indice-1);

@@ -16,6 +16,7 @@ void dia3(const string& nombreCliente);
 void dia4(const string& nombreCliente);
 
 void dia6(const string& nombreCliente);
+void dia7(const string& nombreCliente);
 void generarBoleta(const string& nombreCliente, Orden ordenes[], int numOrdenes);
 
 #endif 

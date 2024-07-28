@@ -185,3 +185,34 @@ void dia1(const string& nombreCliente) {
         }
     } while (opcion!=6);
 }
+
+
+void dia2(const string& nombreCliente) {
+    const int MAX_ENTRADAS = 3;
+    const int MAX_PLATOS_PRINCIPALES = 4;
+    const int MAX_POSTRES = 2;
+    const int MAX_ORDENES = 20;
+
+    string menuEntradas[MAX_ENTRADAS] = {
+        "ensalada de atún",
+        "sopa de vegetales",
+        "tiradito de pescado"
+    };
+    float preciosEntradas[MAX_ENTRADAS] = {22.0, 18.0, 28.0};
+
+    string menuPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {
+        "pescado a la plancha",
+        "pollo a la brasa",    
+        "pasta alfredo",
+        "ensalada cesar"
+    };
+    float preciosPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {38.0, 36.0, 32.0, 28.0};
+
+    string menuPostres[MAX_POSTRES] = {
+        "flan",
+        "tarta de manzana"
+    };
+    float preciosPostres[MAX_POSTRES] = {12.0, 15.0};
+
+    Orden ordenes[MAX_ORDENES];
+    int numOrdenes = 0;

@@ -11,6 +11,7 @@ void agregarOrden(const string& categoria, const string menu[], const float prec
 void mostrarOrdenes(Orden ordenes[], int numOrdenes);
 void borrarOrden(Orden ordenes[], int& numOrdenes, int indice);
 void dia1(const string& nombreCliente);
+void dia2(const string& nombreCliente);
 void generarBoleta(const string& nombreCliente, Orden ordenes[], int numOrdenes);
 
 #endif 

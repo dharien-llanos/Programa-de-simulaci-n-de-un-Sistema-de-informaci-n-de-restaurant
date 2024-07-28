@@ -3,6 +3,14 @@
 #include <iostream>
 #include <ctime>
 using namespace std;
+void limpiarPantalla() {
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
+}
+
 
 int detectarDia() {
     time_t tiempoActual=time(0);
@@ -28,6 +36,7 @@ void mostrarCarta(const string& categoria, const string menu[], const float prec
     for(int i=0;i<tamano;i++) {
         cout <<"  "<<i+1<< ") "<<menu[i]<<"-Precio: S/"<<precios[i]<<endl;
     }
+    cout<<endl;
 }
 
 void agregarOrden(const string& categoria, const string menu[], const float precios[], int tamano, Orden ordenes[], int& numOrdenes) {
@@ -62,11 +71,28 @@ void mostrarOrdenes(Orden ordenes[], int numOrdenes) {
 }
 
 void borrarOrden(Orden ordenes[], int& numOrdenes, int indice) {
-    for (int i=indice;i<numOrdenes-1;i++) {
-        ordenes[i]=ordenes[i + 1];
+    if (numOrdenes > 0) {
+        cout << "Platos:" << endl;
+        for (int i = 0; i < numOrdenes; i++) {
+            cout << i + 1 << ") " << ordenes[i].nombre << " (" << ordenes[i].categoria << "): S/" << ordenes[i].precio << endl;
+        }
+        cout << "Ingrese el numero de la orden a borrar (1-" << numOrdenes << ") : ";
+        cin >> indice;
+        if (indice >= 1 && indice <= numOrdenes) {
+            for (int i = indice - 1; i < numOrdenes - 1; i++) {
+                ordenes[i] = ordenes[i + 1];
+            }
+            numOrdenes--;
+            cout << "Orden borrada" << endl;
+        } else {
+            cout << "Numero de orden invalido." << endl;
+        }
+    } else {
+        cout << "No hay ordenes para borrar." << endl;
     }
-    numOrdenes--;
-    cout<<"Orden borrada"<<endl;
+    cout << "\nPresione Enter para continuar...";
+    cin.ignore();
+    cin.get();
 }
 
 void generarBoleta(const string& nombreCliente, Orden ordenes[], int numOrdenes) {
@@ -133,6 +159,7 @@ void dia1(const string& nombreCliente) {
 
     int opcion;
     do {
+    	 limpiarPantalla();
         cout << "---- Restaurante ----" << endl;
         cout << "1. Mostrar carta" << endl;
         cout << "2. Agregar orden" << endl;
@@ -144,21 +171,26 @@ void dia1(const string& nombreCliente) {
 
         switch (opcion) {
             case 1:
-                cout<<"Entradas:" << endl;
+				limpiarPantalla();
+                
                 mostrarCarta("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS);
-                cout << "\nPlatos Principales:"<<endl;
+               
                 mostrarCarta("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES);
-                break;
-                 cout<<"\nPostres:"<<endl;
+               
                 mostrarCarta("Postres", menuPostres, preciosPostres, MAX_POSTRES);
+                cout<<"\nPresione Enter para continuar...";
+                cin.ignore();
+                cin.get();
                 break;
             case 2:
+            	limpiarPantalla();
                 int categoria;
                 do {
                     cout<<"Seleccione la categoria:"<<endl;
                     cout<<"1. Entradas" << endl;
                     cout<<"2. Platos Principales"<<endl;
-                    cout<<"3. Terminar seleccion"<<endl;
+                     cout<<"3. Postres"<<endl;
+                    cout<<"4. Terminar seleccion"<<endl;
                     cout<<"Ingrese la categoria: ";
                     cin >> categoria;
                     if (categoria==1) {
@@ -169,31 +201,40 @@ void dia1(const string& nombreCliente) {
                     else if (categoria==3) {
                         agregarOrden("Postres", menuPostres, preciosPostres, MAX_POSTRES, ordenes, numOrdenes);
                     }
-                } while (categoria!=3);
+                } while (categoria!=4);
                 break;
             case 3:
+                limpiarPantalla(); 
                 mostrarOrdenes(ordenes, numOrdenes);
+                cout<<"\nPresione Enter para continuar...";
+                cin.ignore();
+                cin.get();
                 break;
+              
             case 4:
-                if (numOrdenes>0) {
-                    int indice;
-                    cout<<"Ingrese el numero de la orden a borrar (1-"<<numOrdenes<<") : ";
-                    cin>>indice;
-                    if(indice>=1 && indice<=numOrdenes) {
-                        borrarOrden(ordenes, numOrdenes,indice - 1);
-                    } else {
-                        cout<<"Numero de orden invalido."<<endl;
-                    }
-                } else {
-                    cout<<"No hay ordenes para borrar "<<endl;
-                }
-                break;
+    limpiarPantalla();
+    if (numOrdenes > 0) {
+        int indice;
+        cout<<"ingrese 1 si desea eliminar un plato  : ";
+        cin>>indice;
+        borrarOrden(ordenes, numOrdenes, indice - 1);
+    } else {
+        cout << "No hay ordenes para borrar." << endl;
+    }
+    cout << "\nPresione Enter para continuar...";
+    cin.ignore();
+    cin.get();
+    break;
             case 5:
+            	limpiarPantalla();
                 generarBoleta(nombreCliente,ordenes,numOrdenes);
                 opcion=6;
                 break;
             default:
-                cout<<"Opcion Incorrecta."<<endl;
+                cout<<"Opcion Incorrecta." << endl;
+                cout<<"\nPresione Enter para continuar...";
+                cin.ignore();
+                cin.get();
         }
     } while (opcion!=6);
 }
@@ -230,69 +271,84 @@ void dia2(const string& nombreCliente) {
     int numOrdenes = 0;
     int opcion;
     do {
-        cout<<"---- Restaurante ----"<< endl;
-        cout<<"1. Mostrar carta"<<endl;
-        cout<<"2. Agregar orden"<<endl;
-        cout<<"3. Mostrar orden"<<endl;
-        cout<<"4. Borrar orden"<<endl;
-        cout<<"5. Generar boleta y salir"<<endl;
-        cout<<"Ingrese una opcion: ";
-        cin>> opcion;
+    	 limpiarPantalla();
+        cout << "---- Restaurante ----" << endl;
+        cout << "1. Mostrar carta" << endl;
+        cout << "2. Agregar orden" << endl;
+        cout << "3. Mostrar orden" << endl;
+        cout << "4. Borrar orden" << endl;
+        cout << "5. Generar boleta y salir" << endl;
+        cout << "Ingrese una opcion: ";
+        cin >> opcion;
 
         switch (opcion) {
             case 1:
-                cout<<"Entradas:"<<endl;
+				limpiarPantalla();
+             
                 mostrarCarta("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS);
-                cout<<"\nPlatos Principales:"<<endl;
+              
                 mostrarCarta("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES);
-                cout<<"\nPostres:"<<endl;
+    
                 mostrarCarta("Postres", menuPostres, preciosPostres, MAX_POSTRES);
+                cout<<"\nPresione Enter para continuar...";
+                cin.ignore();
+                cin.get();
                 break;
             case 2:
+            	limpiarPantalla();
                 int categoria;
                 do {
-                    cout<<"Seleccione la categoria:" << endl;
+                    cout<<"Seleccione la categoria:"<<endl;
                     cout<<"1. Entradas" << endl;
-                    cout<<"2. Platos Principales" << endl;
-                    cout<<"3. Postres" << endl;
-                    cout<<"4. Terminar seleccion" << endl;
+                    cout<<"2. Platos Principales"<<endl;
+                     cout<<"3. Postres"<<endl;
+                    cout<<"4. Terminar seleccion"<<endl;
                     cout<<"Ingrese la categoria: ";
-                    cin>>categoria;
-                    if(categoria==1) {
+                    cin >> categoria;
+                    if (categoria==1) {
                         agregarOrden("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS, ordenes, numOrdenes);
-                    } 
-					else if (categoria==2) {
+                    } else if (categoria==2) {
                         agregarOrden("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES, ordenes, numOrdenes);
-                    } else if (categoria==3) {
+                    }
+                    else if (categoria==3) {
                         agregarOrden("Postres", menuPostres, preciosPostres, MAX_POSTRES, ordenes, numOrdenes);
                     }
-                } while (categoria!= 4);
+                } while (categoria!=4);
                 break;
             case 3:
+                limpiarPantalla(); 
                 mostrarOrdenes(ordenes, numOrdenes);
+                cout<<"\nPresione Enter para continuar...";
+                cin.ignore();
+                cin.get();
                 break;
+               
             case 4:
-                if (numOrdenes>0) {
-                    int indice;
-                    cout<<"Ingrese el numero de la orden a borrar(1-"<<numOrdenes<<") : ";
-                    cin>>indice;
-                    if (indice >= 1 && indice<=numOrdenes) {
-                        borrarOrden(ordenes, numOrdenes, indice - 1);
-                    } else {
-                        cout<<"Numero de orden invalido"<<endl;
-                    }
-                } else {
-                    cout<<"No hay ordenes para borrar"<<endl;
-                }
-                break;
+    limpiarPantalla();
+    if (numOrdenes > 0) {
+        int indice;
+        cout<<"ingrese 1 si desea eliminar un plato  : ";
+        cin>>indice;
+        borrarOrden(ordenes, numOrdenes, indice - 1);
+    } else {
+        cout << "No hay ordenes para borrar." << endl;
+    }
+    cout << "\nPresione Enter para continuar...";
+    cin.ignore();
+    cin.get();
+    break;
             case 5:
-                generarBoleta(nombreCliente, ordenes, numOrdenes);
+            	limpiarPantalla();
+                generarBoleta(nombreCliente,ordenes,numOrdenes);
                 opcion=6;
                 break;
             default:
-                cout<<"Opcion Incorrecta"<<endl;
+                cout<<"Opcion Incorrecta." << endl;
+                cout<<"\nPresione Enter para continuar...";
+                cin.ignore();
+                cin.get();
         }
-    } while (opcion != 6);
+    } while (opcion!=6);
 }
 
 void dia3(const string& nombreCliente) {
@@ -324,72 +380,88 @@ void dia3(const string& nombreCliente) {
 
     Orden ordenes[MAX_ORDENES];
     int numOrdenes = 0;
-    int opcion;
+   int opcion;
     do {
-        cout<<"---- Restaurante ----"<< endl;
-        cout<<"1. Mostrar carta"<<endl;
-        cout<<"2. Agregar orden"<<endl;
-        cout<<"3. Mostrar orden"<<endl;
-        cout<<"4. Borrar orden"<<endl;
-        cout<<"5. Generar boleta y salir"<<endl;
-        cout<<"Ingrese una opcion: ";
-        cin>> opcion;
+    	 limpiarPantalla();
+        cout << "---- Restaurante ----" << endl;
+        cout << "1. Mostrar carta" << endl;
+        cout << "2. Agregar orden" << endl;
+        cout << "3. Mostrar orden" << endl;
+        cout << "4. Borrar orden" << endl;
+        cout << "5. Generar boleta y salir" << endl;
+        cout << "Ingrese una opcion: ";
+        cin >> opcion;
 
         switch (opcion) {
             case 1:
-                cout<<"Entradas:"<<endl;
+				limpiarPantalla();
+               
                 mostrarCarta("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS);
-                cout<<"\nPlatos Principales:"<<endl;
+               
                 mostrarCarta("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES);
-                cout<<"\nPostres:"<<endl;
+                
                 mostrarCarta("Postres", menuPostres, preciosPostres, MAX_POSTRES);
+                cout<<"\nPresione Enter para continuar...";
+                cin.ignore();
+                cin.get();
                 break;
             case 2:
+            	limpiarPantalla();
                 int categoria;
                 do {
-                    cout<<"Seleccione la categoria:" << endl;
+                    cout<<"Seleccione la categoria:"<<endl;
                     cout<<"1. Entradas" << endl;
-                    cout<<"2. Platos Principales" << endl;
-                    cout<<"3. Postres" << endl;
-                    cout<<"4. Terminar seleccion" << endl;
+                    cout<<"2. Platos Principales"<<endl;
+                    cout<<"3. Terminar seleccion"<<endl;
+                     cout<<"4. Postres"<<endl;
                     cout<<"Ingrese la categoria: ";
-                    cin>>categoria;
-                    if(categoria==1) {
+                    cin >> categoria;
+                    if (categoria==1) {
                         agregarOrden("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS, ordenes, numOrdenes);
-                    } 
-					else if (categoria==2) {
+                    } else if (categoria==2) {
                         agregarOrden("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES, ordenes, numOrdenes);
-                    } else if (categoria==3) {
+                    }
+                    else if (categoria==3) {
                         agregarOrden("Postres", menuPostres, preciosPostres, MAX_POSTRES, ordenes, numOrdenes);
                     }
-                } while (categoria!= 4);
+                } while (categoria!=4);
                 break;
             case 3:
+                limpiarPantalla(); 
                 mostrarOrdenes(ordenes, numOrdenes);
+                cout<<"\nPresione Enter para continuar...";
+                cin.ignore();
+                cin.get();
                 break;
+               
             case 4:
-                if (numOrdenes>0) {
-                    int indice;
-                    cout<<"Ingrese el numero de la orden a borrar(1-"<<numOrdenes<<") : ";
-                    cin>>indice;
-                    if (indice >= 1 && indice<=numOrdenes) {
-                        borrarOrden(ordenes, numOrdenes, indice - 1);
-                    } else {
-                        cout<<"Numero de orden invalido"<<endl;
-                    }
-                } else {
-                    cout<<"No hay ordenes para borrar"<<endl;
-                }
-                break;
+    limpiarPantalla();
+    if (numOrdenes > 0) {
+        int indice;
+        cout<<"ingrese 1 si desea eliminar un plato  : ";
+        cin>>indice;
+        borrarOrden(ordenes, numOrdenes, indice - 1);
+    } else {
+        cout << "No hay ordenes para borrar." << endl;
+    }
+    cout << "\nPresione Enter para continuar...";
+    cin.ignore();
+    cin.get();
+    break;
             case 5:
-                generarBoleta(nombreCliente, ordenes, numOrdenes);
+            	limpiarPantalla();
+                generarBoleta(nombreCliente,ordenes,numOrdenes);
                 opcion=6;
                 break;
             default:
-                cout<<"Opcion Incorrecta"<<endl;
+                cout<<"Opcion Incorrecta." << endl;
+                cout<<"\nPresione Enter para continuar...";
+                cin.ignore();
+                cin.get();
         }
-    } while (opcion != 6);
+    } while (opcion!=6);
 }
+
 
 void dia4(const string& nombreCliente) {
     const int MAX_ENTRADAS = 3;
@@ -422,69 +494,84 @@ void dia4(const string& nombreCliente) {
     int numOrdenes = 0;
     int opcion;
     do {
-        cout<<"---- Restaurante ----"<< endl;
-        cout<<"1. Mostrar carta"<<endl;
-        cout<<"2. Agregar orden"<<endl;
-        cout<<"3. Mostrar orden"<<endl;
-        cout<<"4. Borrar orden"<<endl;
-        cout<<"5. Generar boleta y salir"<<endl;
-        cout<<"Ingrese una opcion: ";
-        cin>> opcion;
+    	 limpiarPantalla();
+        cout << "---- Restaurante ----" << endl;
+        cout << "1. Mostrar carta" << endl;
+        cout << "2. Agregar orden" << endl;
+        cout << "3. Mostrar orden" << endl;
+        cout << "4. Borrar orden" << endl;
+        cout << "5. Generar boleta y salir" << endl;
+        cout << "Ingrese una opcion: ";
+        cin >> opcion;
 
         switch (opcion) {
             case 1:
-                cout<<"Entradas:"<<endl;
+				limpiarPantalla();
+              
                 mostrarCarta("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS);
-                cout<<"\nPlatos Principales:"<<endl;
+               
                 mostrarCarta("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES);
-                cout<<"\nPostres:"<<endl;
+                
                 mostrarCarta("Postres", menuPostres, preciosPostres, MAX_POSTRES);
+                cout<<"\nPresione Enter para continuar...";
+                cin.ignore();
+                cin.get();
                 break;
             case 2:
+            	limpiarPantalla();
                 int categoria;
                 do {
-                    cout<<"Seleccione la categoria:" << endl;
+                    cout<<"Seleccione la categoria:"<<endl;
                     cout<<"1. Entradas" << endl;
-                    cout<<"2. Platos Principales" << endl;
-                    cout<<"3. Postres" << endl;
-                    cout<<"4. Terminar seleccion" << endl;
+                    cout<<"2. Platos Principales"<<endl;
+                    cout<<"3. Terminar seleccion"<<endl;
+                     cout<<"4. Postres"<<endl;
                     cout<<"Ingrese la categoria: ";
-                    cin>>categoria;
-                    if(categoria==1) {
+                    cin >> categoria;
+                    if (categoria==1) {
                         agregarOrden("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS, ordenes, numOrdenes);
-                    } 
-					else if (categoria==2) {
+                    } else if (categoria==2) {
                         agregarOrden("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES, ordenes, numOrdenes);
-                    } else if (categoria==3) {
+                    }
+                    else if (categoria==3) {
                         agregarOrden("Postres", menuPostres, preciosPostres, MAX_POSTRES, ordenes, numOrdenes);
                     }
-                } while (categoria!= 4);
+                } while (categoria!=4);
                 break;
             case 3:
+                limpiarPantalla(); 
                 mostrarOrdenes(ordenes, numOrdenes);
+                cout<<"\nPresione Enter para continuar...";
+                cin.ignore();
+                cin.get();
                 break;
+               
             case 4:
-                if (numOrdenes>0) {
-                    int indice;
-                    cout<<"Ingrese el numero de la orden a borrar(1-"<<numOrdenes<<") : ";
-                    cin>>indice;
-                    if (indice >= 1 && indice<=numOrdenes) {
-                        borrarOrden(ordenes, numOrdenes, indice - 1);
-                    } else {
-                        cout<<"Numero de orden invalido"<<endl;
-                    }
-                } else {
-                    cout<<"No hay ordenes para borrar"<<endl;
-                }
-                break;
+    limpiarPantalla();
+    if (numOrdenes > 0) {
+        int indice;
+        cout<<"ingrese 1 si desea eliminar un plato  : ";
+        cin>>indice;
+        borrarOrden(ordenes, numOrdenes, indice - 1);
+    } else {
+        cout << "No hay ordenes para borrar." << endl;
+    }
+    cout << "\nPresione Enter para continuar...";
+    cin.ignore();
+    cin.get();
+    break;
             case 5:
-                generarBoleta(nombreCliente, ordenes, numOrdenes);
+            	limpiarPantalla();
+                generarBoleta(nombreCliente,ordenes,numOrdenes);
                 opcion=6;
                 break;
             default:
-                cout<<"Opcion Incorrecta"<<endl;
+                cout<<"Opcion Incorrecta." << endl;
+                cout<<"\nPresione Enter para continuar...";
+                cin.ignore();
+                cin.get();
         }
-    } while (opcion != 6);
+    } while (opcion!=6);
 }
 
 
@@ -497,8 +584,9 @@ void dia4(const string& nombreCliente) {
 void dia6(const string& nombreCliente) {
     const int MAX_ENTRADAS=3;
     const int MAX_PLATOS_PRINCIPALES=4;
-    const int MAX_BEBIDAS=3;
+    const int MAX_POSTRES=3;
     const int MAX_ORDENES=20;
+    
 
     string menuEntradas[MAX_ENTRADAS]=
 	{
@@ -516,17 +604,18 @@ void dia6(const string& nombreCliente) {
     };
     float preciosPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {40.0,35.0,30.0,38.0};
 
-    string menuBebidas[MAX_BEBIDAS] = {
-        "jugo de naranja",
-        "limonada",
-        "chicha morada"
+    string menuPostres[MAX_POSTRES] = {
+        " Queque de naranja",
+        "Crema volteada",
+        "Arros con leche"
     };
-    float preciosBebidas[MAX_BEBIDAS] = {10.0, 8.0, 12.0};
+    float preciosPostres[MAX_POSTRES] = {10.0, 8.0, 12.0};
 
     Orden ordenes[MAX_ORDENES];
     int numOrdenes=0;
      int opcion;
     do {
+    	 limpiarPantalla();
         cout << "---- Restaurante ----" << endl;
         cout << "1. Mostrar carta" << endl;
         cout << "2. Agregar orden" << endl;
@@ -538,58 +627,75 @@ void dia6(const string& nombreCliente) {
 
         switch (opcion) {
             case 1:
-                cout<<"Entradas:"<<endl;
+				limpiarPantalla();
+              
                 mostrarCarta("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS);
-                cout<<"\nPlatos Principales:"<< endl;
+               
                 mostrarCarta("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES);
-                cout<<"\nBebidas:"<< endl;
-                mostrarCarta("Bebidas", menuBebidas, preciosBebidas, MAX_BEBIDAS);
+               
+                mostrarCarta("Postres", menuPostres, preciosPostres, MAX_POSTRES);
+                cout<<"\nPresione Enter para continuar...";
+                cin.ignore();
+                cin.get();
                 break;
             case 2:
+            	limpiarPantalla();
                 int categoria;
                 do {
                     cout<<"Seleccione la categoria:"<<endl;
-                    cout<<"1. Entradas"<<endl;
+                    cout<<"1. Entradas" << endl;
                     cout<<"2. Platos Principales"<<endl;
-                    cout<<"3. Bebidas"<<endl;
+                     cout<<"3. Postres"<<endl;
                     cout<<"4. Terminar seleccion"<<endl;
                     cout<<"Ingrese la categoria: ";
-                    cin>>categoria;
+                    cin >> categoria;
                     if (categoria==1) {
                         agregarOrden("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS, ordenes, numOrdenes);
                     } else if (categoria==2) {
                         agregarOrden("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES, ordenes, numOrdenes);
-                    } else if (categoria==3) {
-                        agregarOrden("Bebidas", menuBebidas, preciosBebidas, MAX_BEBIDAS, ordenes, numOrdenes);
+                    }
+                    else if (categoria==3) {
+                        agregarOrden("Postres", menuPostres, preciosPostres, MAX_POSTRES, ordenes, numOrdenes);
                     }
                 } while (categoria!=4);
                 break;
             case 3:
+                limpiarPantalla(); 
                 mostrarOrdenes(ordenes, numOrdenes);
+                cout<<"\nPresione Enter para continuar...";
+                cin.ignore();
+                cin.get();
                 break;
+                
             case 4:
-                if (numOrdenes>0) {
-                    int indice;
-                    cout<<"Ingrese el numero de la orden a borrar (1-"<<numOrdenes<<") : ";
-                    cin>>indice;
-                    if (indice>=1 &&indice<=numOrdenes) {
-                        borrarOrden(ordenes, numOrdenes, indice - 1);
-                    } else {
-                        cout<<"Numero de orden invalido"<<endl;
-                    }
-                } else {
-                    cout<<"No hay ordenes para borrar"<< endl;
-                }
-                break;
+            	
+    limpiarPantalla();
+    if (numOrdenes > 0) {
+        int indice;
+        cout<<"ingrese 1 si desea eliminar un plato  : ";
+        cin>>indice;
+        borrarOrden(ordenes, numOrdenes, indice - 1);
+    } else {
+        cout << "No hay ordenes para borrar." << endl;
+    }
+    cout << "\nPresione Enter para continuar...";
+    cin.ignore();
+    cin.get();
+    break;
             case 5:
-                generarBoleta(nombreCliente, ordenes, numOrdenes);
+            	limpiarPantalla();
+                generarBoleta(nombreCliente,ordenes,numOrdenes);
                 opcion=6;
                 break;
             default:
-                cout<<"Opcion Incorrecta"<<endl;
+                cout<<"Opcion Incorrecta." << endl;
+                cout<<"\nPresione Enter para continuar...";
+                cin.ignore();
+                cin.get();
         }
     } while (opcion!=6);
 }
+
 void dia7(const string& nombreCliente) {
     const int MAX_ENTRADAS=3;
     const int MAX_PLATOS_PRINCIPALES=4;
@@ -627,77 +733,88 @@ void dia7(const string& nombreCliente) {
 
     Orden ordenes[MAX_ORDENES];
     int numOrdenes=0;
-    int opcion;
+   int opcion;
     do {
-        cout<<"---- Restaurante ----" << endl;
-        cout<<"1. Mostrar carta" << endl;
-        cout<<"2. Agregar orden" << endl;
-        cout<<"3. Mostrar orden" << endl;
-        cout<<"4. Borrar orden" << endl;
-        cout<<"5. Generar boleta y salir" << endl;
-        cout<<"Ingrese una opcion: ";
-        cin>>opcion;
+    	 limpiarPantalla();
+        cout << "---- Restaurante ----" << endl;
+        cout << "1. Mostrar carta" << endl;
+        cout << "2. Agregar orden" << endl;
+        cout << "3. Mostrar orden" << endl;
+        cout << "4. Borrar orden" << endl;
+        cout << "5. Generar boleta y salir" << endl;
+        cout << "Ingrese una opcion: ";
+        cin >> opcion;
 
         switch (opcion) {
             case 1:
-                cout<<"Entradas:"<<endl;
+				limpiarPantalla();
+                
                 mostrarCarta("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS);
-                cout<<"\nPlatos Principales:"<<endl;
+                
                 mostrarCarta("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES);
-                cout<<"\nPostres:"<<endl;
+            
                 mostrarCarta("Postres", menuPostres, preciosPostres, MAX_POSTRES);
-                cout<<"\nBebidas:"<<endl;
-                mostrarCarta("Bebidas", menuBebidas, preciosBebidas, MAX_BEBIDAS);
+                cout<<"\nPresione Enter para continuar...";
+                cin.ignore();
+                cin.get();
                 break;
             case 2:
+            	limpiarPantalla();
                 int categoria;
                 do {
-                    cout << "Seleccione la categoria:"<<endl;
-                    cout << "1. Entradas"<<endl;
-                    cout << "2. Platos Principales"<<endl;
-                    cout << "3. Postres"<<endl;
-                    cout << "4. Bebidas"<<endl;
-                    cout << "5. Terminar seleccion"<<endl;
-                    cout << "Ingrese la categoria: ";
+                    cout<<"Seleccione la categoria:"<<endl;
+                    cout<<"1. Entradas" << endl;
+                    cout<<"2. Platos Principales"<<endl;
+                    cout<<"3. Postres"<<endl;
+                    cout<<"4. Terminar seleccion"<<endl;
+                    cout<<"Ingrese la categoria: ";
                     cin >> categoria;
                     if (categoria==1) {
                         agregarOrden("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS, ordenes, numOrdenes);
-                    } else if (categoria == 2) {
+                    } else if (categoria==2) {
                         agregarOrden("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES, ordenes, numOrdenes);
-                    } else if (categoria == 3) {
-                        agregarOrden("Postres", menuPostres, preciosPostres, MAX_POSTRES, ordenes, numOrdenes);
-                    } else if (categoria == 4) {
-                        agregarOrden("Bebidas", menuBebidas, preciosBebidas, MAX_BEBIDAS, ordenes, numOrdenes);
                     }
-                } while (categoria!=5);
+                    else if (categoria==3) {
+                        agregarOrden("Postres", menuPostres, preciosPostres, MAX_POSTRES, ordenes, numOrdenes);
+                    }
+                } while (categoria!=4);
                 break;
             case 3:
+                limpiarPantalla(); 
                 mostrarOrdenes(ordenes, numOrdenes);
+                cout<<"\nPresione Enter para continuar...";
+                cin.ignore();
+                cin.get();
                 break;
-            case 4:
-                if (numOrdenes>0) {
-                    int indice;
-                    cout<<"Ingrese el numero de la orden a borrar (1-"<<numOrdenes<<") : ";
-                    cin>>indice;
-                    if (indice>=1 && indice<=numOrdenes) {
-                        borrarOrden(ordenes, numOrdenes, indice - 1);
-                    } else {
-                        cout<<"Numero de orden invalido"<<endl;
-                    }
-                } else {
-                    cout<<"No hay ordenes para borrar"<<endl;
-                }
-                break;
+                
+            
+            	case 4:
+    limpiarPantalla();
+    if (numOrdenes > 0) {
+        int indice;
+        cout<<"ingrese 1 si desea eliminar un plato  : ";
+        cin>>indice;
+        borrarOrden(ordenes, numOrdenes, indice - 1);
+    } else {
+        cout << "No hay ordenes para borrar." << endl;
+    }
+    cout << "\nPresione Enter para continuar...";
+    cin.ignore();
+    cin.get();
+    break;
             case 5:
-                generarBoleta(nombreCliente, ordenes, numOrdenes);
-                opcion=6; 
+            	limpiarPantalla();
+                generarBoleta(nombreCliente,ordenes,numOrdenes);
+                opcion=6;
                 break;
             default:
-                cout<<"Opcion Incorrecta"<< endl;
+                cout<<"Opcion Incorrecta." << endl;
+                cout<<"\nPresione Enter para continuar...";
+                cin.ignore();
+                cin.get();
         }
-    } while (opcion != 6);
+    } while (opcion!=6);
 }
 
-    
 
     

@@ -21,6 +21,9 @@ int main() {
             case 3:
             dia3(nombreCliente);
             break;
+            case 4:
+            dia4(nombreCliente);
+            break;
         default:
             cout << "No hay un menu definido para hoy." << endl;
     }

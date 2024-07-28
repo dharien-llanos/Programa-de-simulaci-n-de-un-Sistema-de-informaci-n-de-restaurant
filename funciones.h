@@ -12,4 +12,5 @@ void mostrarOrdenes(Orden ordenes[],int numOrdenes);
 void borrarOrden(Orden ordenes[],int &numOrdenes,int indice);
 void dia1();
 
+
 #endif 

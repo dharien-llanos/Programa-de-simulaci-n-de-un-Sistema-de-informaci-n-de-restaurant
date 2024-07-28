@@ -18,7 +18,7 @@ int detectarDia() {
 
     int diaDeLaSemana=(tiempoLocal->tm_wday == 0) ? 7 : tiempoLocal->tm_wday;
 
-    cout<<"El numero del dia de la semana es:"<<diaDeLaSemana<<endl;
+    cout<<"El numero del dia de la semana es :"<<diaDeLaSemana<<endl;
     
     return diaDeLaSemana;
 }

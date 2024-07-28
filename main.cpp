@@ -5,14 +5,18 @@
 using namespace std;
 
 int main() {
-    int diaDeLaSemana=detectarDia();
+    string nombreCliente;
+    cout << "Bienvenido al restaurante!" << endl;
+    cout << "Por favor, ingrese su nombre: ";
+    getline(cin, nombreCliente);
+    int diaDeLaSemana = detectarDia();
 
-        switch (diaDeLaSemana) {
+    switch (diaDeLaSemana) {
         case 1:
-            dia1();
+            dia1(nombreCliente);
             break;
         default:
-            cout<<"No hay un menu definido para hoy "<<endl;
+            cout << "No hay un menu definido para hoy." << endl;
     }
     return 0;
 }

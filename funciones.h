@@ -13,7 +13,7 @@ void borrarOrden(Orden ordenes[], int& numOrdenes, int indice);
 void dia1(const string& nombreCliente);
 void dia2(const string& nombreCliente);
 void dia3(const string& nombreCliente);
-
+void dia4(const string& nombreCliente);
 void generarBoleta(const string& nombreCliente, Orden ordenes[], int numOrdenes);
 
 #endif 

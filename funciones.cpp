@@ -590,5 +590,44 @@ void dia6(const string& nombreCliente) {
         }
     } while (opcion!=6);
 }
+void dia7(const string& nombreCliente) {
+    const int MAX_ENTRADAS=3;
+    const int MAX_PLATOS_PRINCIPALES=4;
+    const int MAX_POSTRES=2;
+    const int MAX_BEBIDAS=3;
+    const int MAX_ORDENES=20;
+
+    string menuEntradas[MAX_ENTRADAS] = {
+        "tamales",
+        "anticuchos",
+        "rocoto relleno"
+    };
+    float preciosEntradas[MAX_ENTRADAS] = {30.0, 25.0, 35.0};
+
+    string menuPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {
+        "seco de cabrito",
+        "carapulcra",
+        "pachamanca",
+        "arroz chaufa"
+    };
+    float preciosPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {55.0, 50.0, 60.0, 45.0};
+
+    string menuPostres[MAX_POSTRES] = {
+        "mazamorra morada",
+        "suspiro a la limeña"
+    };
+    float preciosPostres[MAX_POSTRES] = {10.0, 12.0};
+
+    string menuBebidas[MAX_BEBIDAS] = {
+        "pisco sour",
+        "cerveza artesanal",
+        "jugo de maracuyá"
+    };
+    float preciosBebidas[MAX_BEBIDAS] = {15.0, 18.0, 10.0};
+
+    Orden ordenes[MAX_ORDENES];
+    int numOrdenes=0;
+
+    
 
     

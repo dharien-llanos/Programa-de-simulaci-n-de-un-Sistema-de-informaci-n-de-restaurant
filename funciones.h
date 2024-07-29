@@ -20,13 +20,9 @@ void dia6(const string& nombreCliente);
 void dia7(const string& nombreCliente);
 void generarBoleta(const string& nombreCliente, Orden ordenes[], int numOrdenes);
 void limpiarPantalla();
-void menu0();
 void menu1();
 void menu2();
-void menu3();
 void linea_horizontal();
 void mostrarMenuPrincipal();
 void cambiarColor(int color);
-void imprimirFechaActual();
-
 #endif 

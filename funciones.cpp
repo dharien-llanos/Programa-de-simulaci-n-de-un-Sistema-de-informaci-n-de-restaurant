@@ -30,7 +30,63 @@ int detectarDia() {
 
     return diaDeLaSemana;
 }
+void linea_horizontal() {
+    char linea_horizontal = static_cast<char>(196);
 
+    int longitud = 85;
+    cout << "|";
+    for (int i = 0; i < longitud; ++i) {
+        cout << linea_horizontal;
+    }
+    cout << "|" << endl;
+}
+
+void mostrarMenuPrincipal() {
+    cout << " * * * * * * * * * * *  BIENVENIDO RESTAURANTE RINCONCITO TACNENIO  * * * * * * * * * * * " << endl;
+    cout << "_______________________________________________________________________________________" << endl;
+    linea_horizontal();
+	cout << " ||_________________________________|                           | |                  |" << endl;
+	cout << " | |______|  1. MOSTRAR LA CARTA  | |*  2. REALIZAR PEDIDO      | |   3. MOSTRAR     |" << endl;
+	cout << " | |______| * Donde cada plato  | |*  ________                  | |      PEDIDO      |" << endl;
+	cout << " | |      |    cuenta una       | |*   |____|      *  *  *  *   | |__________________|_" << endl;
+	cout << " | |  *   |     historia    * * | |*   ||  ||        *  *  *    | |___________________|" << endl;
+	cout << " | | ***  | |_  ___  _|    **** | |*   ||  ||    |_  __|_|__  _|| |  _  _  |  _   _ |" << endl;
+	cout << " | |***** | | |  |  | |    _*_  | |*  _||__||_   | |  | | |  | || | | | | | | | | | ||" << endl;
+	cout << " | |__|___|________________|_|_ | |*                            | | | | | | | | | | ||" << endl;
+	cout << "_|________________________________|_____________________________|_|__|___|__|__|___|_|_" << endl;
+    linea_horizontal();
+	cout << " |                                 |*                           | |                   |" << endl;
+	cout << " |                              _  |*                           | |                   |" << endl;
+	cout << " |  |_|_| *******************  | | |*    4) ELIMINAR PLATO      | |   5. MOSTRAR      |" << endl;
+	cout << " |    |   RINCONCITO TACNENIO  |_| |*       DEL PEDIDO          | |      BOLETA       |" << endl;
+	cout << " |    |   *******************  ||  |*                           | |     __________    |" << endl;
+	cout << " |  ____________________________   |*                          /---\     |       |    |" << endl;
+	cout << " |  ____________________________   |*     _____________       |-___-|    |6)SALIR|    |" << endl;
+	cout << " |   |  _   _           _   _  |   |*     |_ _ _ _ _ _|       |-| |-|    |     o |    |" << endl;
+	cout << " |   | | | | | _______ | | | | |   |*  |_   _________   _|    |-|_|-|    |       |    |" << endl;
+	cout << " |   | | | | | |  |  | | | | | |   |*  | |   |  |  |   | |    | -|- |    |       |    |" << endl;
+	linea_horizontal();
+	cout << endl;
+}
+void menu1() {
+    cout << "      -------------------------------------------------------------------------------" << endl;
+    cout << "          <<<<<<<<<<            RINCONCITO TACNENIO RESTAURANT          >>>>>>>>>>     " << endl;
+    cout << "      ------------------------------------------------------------------------------- " << endl;
+    cout << "                                                                           " << endl;
+    cout << "      (1) ENTRADAS               ||    ||  |||    ||  ||||||||  ||||||\\   |||||||    " << endl;
+    cout << "      (2) PLATOS PRINCIPALES     ||    ||  ||||   ||     ||     ||   ||   ||         " << endl;
+    cout << "      (3) POSTRES                ||    ||  || ||  ||     ||     ||   ||   ||         " << endl;
+    cout << "      (4) VOLVER AL MENU         ||    ||  ||  || ||     ||     |||||||   || |||||    " << endl;
+    cout << "          PRINCIPAL              ||    ||  ||   ||||     ||     ||   ||   ||    ||     " << endl;
+    cout << "                                 ||||||||  ||    ||| ||||||     ||||||/   ||||||||      " << endl;  
+}
+void menu2() {
+    cout << "      -------------------------------------------------------------------------------" << endl;
+    cout << "          <<<<<<<<<<            RINCONCITO TACNENIO RESTAURANT          >>>>>>>>>>     " << endl;
+    cout << "      ------------------------------------------------------------------------------- " << endl;
+    cout << "       LOS PLATOS SELECCIONADOS SON :                                                         " << endl;
+
+}
 void mostrarCarta(const string& categoria, const string menu[], const float precios[], int tamano) {
     cout<<"\n"<<categoria<<":"<<endl;
     for(int i=0;i<tamano;i++) {
@@ -61,12 +117,11 @@ void mostrarOrdenes(Orden ordenes[], int numOrdenes) {
     if (numOrdenes==0) {
         cout<<"No ha seleccionado ningun plato"<<endl;
     } else {
-        cout<<"Platos seleccionados:" << endl;
         for (int i=0;i<numOrdenes;i++) {
-            cout<<i+1<<" ) "<<ordenes[i].nombre<<" ("<<ordenes[i].categoria<<"): S/"<<ordenes[i].precio<<endl;
+            cout<<"\n\n        "<< i + 1  <<  "  ) "<<ordenes[i].nombre<<"("<<ordenes[i].categoria<<"): S/"<<ordenes[i].precio<<endl;
             suma+=ordenes[i].precio;
         }
-        cout<<"Total de consumo: S/"<<suma<<endl;
+        cout<<" \n\n   Total de consumo: S/"<<suma<<endl;
     }
 }
 
@@ -160,12 +215,7 @@ void dia1(const string& nombreCliente) {
     int opcion;
     do {
     	 limpiarPantalla();
-        cout << "---- Restaurante ----" << endl;
-        cout << "1. Mostrar carta" << endl;
-        cout << "2. Agregar orden" << endl;
-        cout << "3. Mostrar orden" << endl;
-        cout << "4. Borrar orden" << endl;
-        cout << "5. Generar boleta y salir" << endl;
+        mostrarMenuPrincipal();
         cout << "Ingrese una opcion: ";
         cin >> opcion;
 
@@ -186,11 +236,7 @@ void dia1(const string& nombreCliente) {
             	limpiarPantalla();
                 int categoria;
                 do {
-                    cout<<"Seleccione la categoria:"<<endl;
-                    cout<<"1. Entradas" << endl;
-                    cout<<"2. Platos Principales"<<endl;
-                     cout<<"3. Postres"<<endl;
-                    cout<<"4. Terminar seleccion"<<endl;
+                    menu1();
                     cout<<"Ingrese la categoria: ";
                     cin >> categoria;
                     if (categoria==1) {
@@ -205,6 +251,7 @@ void dia1(const string& nombreCliente) {
                 break;
             case 3:
                 limpiarPantalla(); 
+                menu2();
                 mostrarOrdenes(ordenes, numOrdenes);
                 cout<<"\nPresione Enter para continuar...";
                 cin.ignore();
@@ -272,12 +319,7 @@ void dia2(const string& nombreCliente) {
     int opcion;
     do {
     	 limpiarPantalla();
-        cout << "---- Restaurante ----" << endl;
-        cout << "1. Mostrar carta" << endl;
-        cout << "2. Agregar orden" << endl;
-        cout << "3. Mostrar orden" << endl;
-        cout << "4. Borrar orden" << endl;
-        cout << "5. Generar boleta y salir" << endl;
+        mostrarMenuPrincipal();
         cout << "Ingrese una opcion: ";
         cin >> opcion;
 
@@ -298,11 +340,7 @@ void dia2(const string& nombreCliente) {
             	limpiarPantalla();
                 int categoria;
                 do {
-                    cout<<"Seleccione la categoria:"<<endl;
-                    cout<<"1. Entradas" << endl;
-                    cout<<"2. Platos Principales"<<endl;
-                     cout<<"3. Postres"<<endl;
-                    cout<<"4. Terminar seleccion"<<endl;
+                    menu1();
                     cout<<"Ingrese la categoria: ";
                     cin >> categoria;
                     if (categoria==1) {
@@ -317,6 +355,7 @@ void dia2(const string& nombreCliente) {
                 break;
             case 3:
                 limpiarPantalla(); 
+                menu2();
                 mostrarOrdenes(ordenes, numOrdenes);
                 cout<<"\nPresione Enter para continuar...";
                 cin.ignore();
@@ -382,13 +421,8 @@ void dia3(const string& nombreCliente) {
     int numOrdenes = 0;
    int opcion;
     do {
-    	 limpiarPantalla();
-        cout << "---- Restaurante ----" << endl;
-        cout << "1. Mostrar carta" << endl;
-        cout << "2. Agregar orden" << endl;
-        cout << "3. Mostrar orden" << endl;
-        cout << "4. Borrar orden" << endl;
-        cout << "5. Generar boleta y salir" << endl;
+    	limpiarPantalla();
+        mostrarMenuPrincipal();
         cout << "Ingrese una opcion: ";
         cin >> opcion;
 
@@ -409,11 +443,7 @@ void dia3(const string& nombreCliente) {
             	limpiarPantalla();
                 int categoria;
                 do {
-                    cout<<"Seleccione la categoria:"<<endl;
-                    cout<<"1. Entradas" << endl;
-                    cout<<"2. Platos Principales"<<endl;
-                    cout<<"3. Terminar seleccion"<<endl;
-                     cout<<"4. Postres"<<endl;
+                    menu1();
                     cout<<"Ingrese la categoria: ";
                     cin >> categoria;
                     if (categoria==1) {
@@ -428,6 +458,7 @@ void dia3(const string& nombreCliente) {
                 break;
             case 3:
                 limpiarPantalla(); 
+                menu2();
                 mostrarOrdenes(ordenes, numOrdenes);
                 cout<<"\nPresione Enter para continuar...";
                 cin.ignore();
@@ -494,13 +525,8 @@ void dia4(const string& nombreCliente) {
     int numOrdenes = 0;
     int opcion;
     do {
-    	 limpiarPantalla();
-        cout << "---- Restaurante ----" << endl;
-        cout << "1. Mostrar carta" << endl;
-        cout << "2. Agregar orden" << endl;
-        cout << "3. Mostrar orden" << endl;
-        cout << "4. Borrar orden" << endl;
-        cout << "5. Generar boleta y salir" << endl;
+    	limpiarPantalla();
+        mostrarMenuPrincipal();
         cout << "Ingrese una opcion: ";
         cin >> opcion;
 
@@ -521,11 +547,7 @@ void dia4(const string& nombreCliente) {
             	limpiarPantalla();
                 int categoria;
                 do {
-                    cout<<"Seleccione la categoria:"<<endl;
-                    cout<<"1. Entradas" << endl;
-                    cout<<"2. Platos Principales"<<endl;
-                    cout<<"3. Terminar seleccion"<<endl;
-                     cout<<"4. Postres"<<endl;
+                    menu1();
                     cout<<"Ingrese la categoria: ";
                     cin >> categoria;
                     if (categoria==1) {
@@ -540,6 +562,7 @@ void dia4(const string& nombreCliente) {
                 break;
             case 3:
                 limpiarPantalla(); 
+                menu2();
                 mostrarOrdenes(ordenes, numOrdenes);
                 cout<<"\nPresione Enter para continuar...";
                 cin.ignore();
@@ -615,13 +638,8 @@ void dia6(const string& nombreCliente) {
     int numOrdenes=0;
      int opcion;
     do {
-    	 limpiarPantalla();
-        cout << "---- Restaurante ----" << endl;
-        cout << "1. Mostrar carta" << endl;
-        cout << "2. Agregar orden" << endl;
-        cout << "3. Mostrar orden" << endl;
-        cout << "4. Borrar orden" << endl;
-        cout << "5. Generar boleta y salir" << endl;
+    	limpiarPantalla();
+        mostrarMenuPrincipal();
         cout << "Ingrese una opcion: ";
         cin >> opcion;
 
@@ -642,11 +660,7 @@ void dia6(const string& nombreCliente) {
             	limpiarPantalla();
                 int categoria;
                 do {
-                    cout<<"Seleccione la categoria:"<<endl;
-                    cout<<"1. Entradas" << endl;
-                    cout<<"2. Platos Principales"<<endl;
-                     cout<<"3. Postres"<<endl;
-                    cout<<"4. Terminar seleccion"<<endl;
+                    menu1();
                     cout<<"Ingrese la categoria: ";
                     cin >> categoria;
                     if (categoria==1) {
@@ -661,6 +675,7 @@ void dia6(const string& nombreCliente) {
                 break;
             case 3:
                 limpiarPantalla(); 
+                menu2();
                 mostrarOrdenes(ordenes, numOrdenes);
                 cout<<"\nPresione Enter para continuar...";
                 cin.ignore();
@@ -735,13 +750,8 @@ void dia7(const string& nombreCliente) {
     int numOrdenes=0;
    int opcion;
     do {
-    	 limpiarPantalla();
-        cout << "---- Restaurante ----" << endl;
-        cout << "1. Mostrar carta" << endl;
-        cout << "2. Agregar orden" << endl;
-        cout << "3. Mostrar orden" << endl;
-        cout << "4. Borrar orden" << endl;
-        cout << "5. Generar boleta y salir" << endl;
+    	limpiarPantalla();
+        mostrarMenuPrincipal();
         cout << "Ingrese una opcion: ";
         cin >> opcion;
 
@@ -762,11 +772,7 @@ void dia7(const string& nombreCliente) {
             	limpiarPantalla();
                 int categoria;
                 do {
-                    cout<<"Seleccione la categoria:"<<endl;
-                    cout<<"1. Entradas" << endl;
-                    cout<<"2. Platos Principales"<<endl;
-                    cout<<"3. Postres"<<endl;
-                    cout<<"4. Terminar seleccion"<<endl;
+                    menu1();
                     cout<<"Ingrese la categoria: ";
                     cin >> categoria;
                     if (categoria==1) {
@@ -781,6 +787,7 @@ void dia7(const string& nombreCliente) {
                 break;
             case 3:
                 limpiarPantalla(); 
+                menu2();
                 mostrarOrdenes(ordenes, numOrdenes);
                 cout<<"\nPresione Enter para continuar...";
                 cin.ignore();

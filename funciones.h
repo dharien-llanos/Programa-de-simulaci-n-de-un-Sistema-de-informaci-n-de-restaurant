@@ -3,6 +3,7 @@
 
 #include <string>
 #include "orden.h"
+#include <windows.h> 
 using namespace std;
 
 int detectarDia();
@@ -21,6 +22,7 @@ void generarBoleta(const string& nombreCliente, Orden ordenes[], int numOrdenes)
 void limpiarPantalla();
 void menu1();
 void menu2();
+void linea_horizontal();
 void mostrarMenuPrincipal();
-
+void cambiarColor(int color);
 #endif 

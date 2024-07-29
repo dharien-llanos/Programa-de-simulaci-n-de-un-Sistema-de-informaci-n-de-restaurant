@@ -12,7 +12,16 @@ void limpiarPantalla() {
     #endif
 }
 
+void imprimirFechaActual() {
+    time_t tiempoActual = time(0);
+    tm* tiempoLocal = localtime(&tiempoActual);
 
+    const char* diasDeLaSemana[] = {"Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"};
+    const char* mesesDelAnio[] = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+
+    cout << diasDeLaSemana[tiempoLocal->tm_wday] << "  "  << tiempoLocal->tm_mday << " de " 
+              << mesesDelAnio[tiempoLocal->tm_mon] << " de " << (tiempoLocal->tm_year + 1900) << endl;
+}
 
 int detectarDia() {
     time_t tiempoActual=time(0);
@@ -70,6 +79,13 @@ void mostrarMenuPrincipal() {
     cambiarColor(7);
 }
 
+void menu0() {
+    cout << " -------------------------------------------------------------------------------" << endl;
+    cout << "     <<<<<<<<<<            RINCONCITO TACNENIO RESTAURANT          >>>>>>>>>>     " << endl;
+    cout << " ------------------------------------------------------------------------------- " << endl;
+    cout << "  MENU DE HOY :                                                         " << endl;
+    imprimirFechaActual();
+}
 
 void menu1() {
     cambiarColor(6); 
@@ -96,8 +112,14 @@ void menu2() {
     cambiarColor(7); 
 }
 
+void menu3() {
+    cout << "      -------------------------------------------------------------------------------" << endl;
+    cout << "          <<<<<<<<<<            RINCONCITO TACNENIO RESTAURANT          >>>>>>>>>>     " << endl;
+    cout << "      ------------------------------------------------------------------------------- " << endl;
+    cout << "       ELIMINAR PLATOS DEL PEDIDO:                                                         " << endl;
+}
 
-    void linea_horizontal() {
+void linea_horizontal() {
     char linea_horizontal = static_cast<char>(196);
 
     int longitud = 85;
@@ -244,7 +266,7 @@ void dia1(const string& nombreCliente) {
         switch (opcion) {
             case 1:
 				limpiarPantalla();
-                
+                menu0();
                 mostrarCarta("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS);
                
                 mostrarCarta("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES);
@@ -282,6 +304,7 @@ void dia1(const string& nombreCliente) {
               
             case 4:
     limpiarPantalla();
+    menu3();
     if (numOrdenes > 0) {
         int indice;
         cout<<"ingrese 1 si desea eliminar un plato  : ";
@@ -351,7 +374,7 @@ void dia2(const string& nombreCliente) {
         switch (opcion) {
             case 1:
 				limpiarPantalla();
-             
+                menu0();
                 mostrarCarta("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS);
               
                 mostrarCarta("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES);
@@ -389,6 +412,7 @@ void dia2(const string& nombreCliente) {
                
             case 4:
     limpiarPantalla();
+    menu3();
     if (numOrdenes > 0) {
         int indice;
         cout<<"ingrese 1 si desea eliminar un plato  : ";
@@ -454,7 +478,7 @@ void dia3(const string& nombreCliente) {
         switch (opcion) {
             case 1:
 				limpiarPantalla();
-               
+                menu0();
                 mostrarCarta("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS);
                
                 mostrarCarta("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES);
@@ -492,6 +516,7 @@ void dia3(const string& nombreCliente) {
                
             case 4:
     limpiarPantalla();
+    menu3();
     if (numOrdenes > 0) {
         int indice;
         cout<<"ingrese 1 si desea eliminar un plato  : ";
@@ -558,7 +583,7 @@ void dia4(const string& nombreCliente) {
         switch (opcion) {
             case 1:
 				limpiarPantalla();
-              
+                menu0();
                 mostrarCarta("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS);
                
                 mostrarCarta("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES);
@@ -596,6 +621,7 @@ void dia4(const string& nombreCliente) {
                
             case 4:
     limpiarPantalla();
+    menu3();
     if (numOrdenes > 0) {
         int indice;
         cout<<"ingrese 1 si desea eliminar un plato  : ";
@@ -666,7 +692,7 @@ void dia5(const string& nombreCliente) {
         switch (opcion) {
             case 1:
 				limpiarPantalla();
-                
+                menu0();
                 mostrarCarta("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS);
                 
                 mostrarCarta("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES);
@@ -705,6 +731,7 @@ void dia5(const string& nombreCliente) {
             
             	case 4:
     limpiarPantalla();
+    menu3();
     if (numOrdenes > 0) {
         int indice;
         cout<<"ingrese 1 si desea eliminar un plato  : ";
@@ -774,7 +801,7 @@ void dia6(const string& nombreCliente) {
         switch (opcion) {
             case 1:
 				limpiarPantalla();
-              
+                menu0();
                 mostrarCarta("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS);
                
                 mostrarCarta("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES);
@@ -813,6 +840,7 @@ void dia6(const string& nombreCliente) {
             case 4:
             	
     limpiarPantalla();
+    menu3();
     if (numOrdenes > 0) {
         int indice;
         cout<<"ingrese 1 si desea eliminar un plato  : ";
@@ -886,7 +914,7 @@ void dia7(const string& nombreCliente) {
         switch (opcion) {
             case 1:
 				limpiarPantalla();
-                
+                menu0();
                 mostrarCarta("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS);
                 
                 mostrarCarta("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES);
@@ -927,6 +955,7 @@ void dia7(const string& nombreCliente) {
             
             	case 4:
     limpiarPantalla();
+    menu3();
     if (numOrdenes > 0) {
         int indice;
         cout<<"ingrese 1 si desea eliminar un plato  : ";

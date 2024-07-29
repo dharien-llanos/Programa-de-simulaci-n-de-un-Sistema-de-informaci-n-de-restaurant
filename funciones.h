@@ -19,5 +19,8 @@ void dia6(const string& nombreCliente);
 void dia7(const string& nombreCliente);
 void generarBoleta(const string& nombreCliente, Orden ordenes[], int numOrdenes);
 void limpiarPantalla();
+void menu1();
+void menu2();
+void mostrarMenuPrincipal();
 
 #endif 

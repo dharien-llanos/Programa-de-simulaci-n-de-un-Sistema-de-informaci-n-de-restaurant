@@ -25,8 +25,10 @@ int main() {
             dia4(nombreCliente);
             break;
             case 5:
+            dia5(nombreCliente);
+            break;
             case 6:
-            	dia6(nombreCliente);
+           	dia6(nombreCliente);
             break;
             case 7:
             dia7(nombreCliente);

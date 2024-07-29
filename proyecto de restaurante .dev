@@ -1,8 +1,8 @@
 [Project]
-filename=proyecto de restaurante .dev
-name=proyecto de restaurante 
+FileName=proyecto de restaurante .dev
+Name=proyecto de restaurante
 Type=1
-Ver=2
+Ver=1
 ObjFiles=
 Includes=
 Libs=

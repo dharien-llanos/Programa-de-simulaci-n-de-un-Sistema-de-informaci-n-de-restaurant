@@ -42,14 +42,14 @@ void cambiarColor(int color) {
 // este funcion sirve para dar el menu principal
 void mostrarMenuPrincipal() {
     cambiarColor(6); 
-    cout<<" * * * * * * * * * * *  BIENVENIDO RESTAURANTE RINCONCITO TACNENIO  * * * * * * * * * * * " << endl;
+    cout<<" * * * * * * * * * * *  BIENVENIDO RESTAURANTE RINCONCITO BASADRINO  * * * * * * * * * * * " << endl;
     cout<<"_______________________________________________________________________________________" << endl;
     linea_horizontal(); 
     cout<<" ||_________________________________|                           | |                  |" << endl;
     cout<<" | |______|  1. MOSTRAR LA CARTA  | |*  2. REALIZAR PEDIDO      | |   3. MOSTRAR     |" << endl;
     cout<<" | |______| * Donde cada plato  | |*  ________                  | |      PEDIDO      |" << endl;
     cout<<" | |      |    cuenta una       | |*   |____|      *  *  *  *   | |__________________|_" << endl;
-    cout<<" | |  *   |     historia    * * | |*   ||  ||        *  *  *    | |___________________|" << endl;
+    cout<<" | |  *   |     historia    * * | |*   ||  ||        *  *  *    | |__________________|" << endl;
     cout<<" | | ***  | |_  ___  _|    **** | |*   ||  ||    |_  __|_|__  _|| |  _  _  |  _   _ |" << endl;
     cout<<" | |***** | | |  |  | |    _*_  | |*  _||__||_   | |  | | |  | || | | | | | | | | | ||" << endl;
     cout<<" | |__|___|________________|_|_ | |*                            | | | | | | | | | | ||" << endl;
@@ -58,9 +58,9 @@ void mostrarMenuPrincipal() {
     cout<<" |                                 |*                           | |                   |" << endl;
     cout<<" |                              _  |*                           | |                   |" << endl;
     cout<<" |  |_|_| *******************  | | |*    4) ELIMINAR PLATO      | |   5. MOSTRAR      |" << endl;
-    cout<<" |    |   RINCONCITO TACNENIO  |_| |*       DEL PEDIDO          | |      BOLETA       |" << endl;
+    cout<<" |    |   RINCONCITO BASADRINO  |_| |*       DEL PEDIDO          | |      BOLETA       |" << endl;
     cout<<" |    |   *******************  ||  |*                           | |     __________    |" << endl;
-    cout<<" |  ____________________________   |*                          /---\\     |       |    |" << endl;
+    cout<<" |  ____________________________   |*                          /---\\    |       |    |" << endl;
     cout<<" |  ____________________________   |*     _____________       |-___-|    |6)SALIR|    |" << endl;
     cout<<" |   |  _   _           _   _  |   |*     |_ _ _ _ _ _|       |-| |-|    |     o |    |" << endl;
     cout<<" |   | | | | | _______ | | | | |   |*  |_   _________   _|    |-|_|-|    |       |    |" << endl;
@@ -74,7 +74,7 @@ void mostrarMenuPrincipal() {
 void menu1() {
     cambiarColor(6); 
     cout<<"      -------------------------------------------------------------------------------" << endl;
-    cout<<"          <<<<<<<<<<            RINCONCITO TACNENIO RESTAURANT          >>>>>>>>>>     " << endl;
+    cout<<"          <<<<<<<<<<            RINCONCITO BASADRINO RESTAURANT          >>>>>>>>>>     " << endl;
     cout<<"      ------------------------------------------------------------------------------- " << endl;
     cout<<"                                                                           " << endl;
     cambiarColor(11); // Celeste
@@ -90,7 +90,7 @@ void menu1() {
 void menu2() {
     cambiarColor(6);
     cout<<"      -------------------------------------------------------------------------------" << endl;
-    cout<<"          <<<<<<<<<<            RINCONCITO TACNENIO RESTAURANT          >>>>>>>>>>     " << endl;
+    cout<<"          <<<<<<<<<<            RINCONCITO BASADRINO RESTAURANT          >>>>>>>>>>     " << endl;
     cout<<"      ------------------------------------------------------------------------------- " << endl;
     cout<<"       LOS PLATOS SELECCIONADOS SON :                                                         " << endl;
     cambiarColor(7); 

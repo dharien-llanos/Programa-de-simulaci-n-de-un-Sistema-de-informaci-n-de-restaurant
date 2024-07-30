@@ -173,37 +173,57 @@ void borrarOrden(Orden ordenes[], int& numOrdenes, int indice) {
 }
 //esta funcion sirve para generar la boleta
 void generarBoleta(const string& nombreCliente, Orden ordenes[], int numOrdenes) {
-    float suma=0;
-    float descuento=0;
-    cout << "\n---- BOLETA ----"<<endl;
-    cout << "Nombre del Cliente: "<<nombreCliente<<endl;
+    float suma = 0;
+    float descuento = 0;
+
+    // Titulo
+    cambiarColor(11); 
+    cout << "\n---- BOLETA ----" << endl;
+    cambiarColor(15);
+    cout << "Nombre del Cliente: " << nombreCliente << endl;
+
     if (numOrdenes == 0) {
-        cout << "No ha seleccionado ningun plato"<<endl;
+        cambiarColor(12);
+        cout << "No ha seleccionado ningun plato" << endl;
+        cambiarColor(15); 
     } else {
-        cout << "Platos seleccionados:"<<endl;
-        for (int i = 0; i < numOrdenes;i++) {
-            cout<<i + 1<<") "<<ordenes[i].nombre <<" ("<<ordenes[i].categoria<<"): S/"<<ordenes[i].precio<<endl;
+        cambiarColor(14);
+        cout << "Platos seleccionados:" << endl;
+        cambiarColor(15); 
+
+        for (int i = 0; i < numOrdenes; i++) {
+            cout << i + 1 << ") " << ordenes[i].nombre << " (" << ordenes[i].categoria << "): S/" << ordenes[i].precio << endl;
             suma += ordenes[i].precio;
         }
+
+        cambiarColor(10); 
         cout<<"Total de consumo: S/"<<suma<<endl;
+
         if (numOrdenes > 10) {
+            cambiarColor(13); 
             cout<<"Descuento 20% al total de consumo"<<endl;
-            descuento = suma * 0.20;
-        } else if (numOrdenes > 5) {
+            descuento=suma * 0.20;
+        } else if(numOrdenes>5) {
+            cambiarColor(13); 
             cout<<"Descuento 10% al total de consumo"<<endl;
-            descuento=suma * 0.10;
+            descuento=suma*0.10;
         } else {
-            cout<<"Descuento 5% al total de consumo."<<endl;
-            descuento=suma * 0.05;
+            cambiarColor(13); 
+            cout<<"Descuento 5% al total de consumo"<<endl;
+            descuento=suma* 0.05;
         }
+
         float totalFinal=suma-descuento;
+        cambiarColor(10);
         cout<<"Total con descuento del consumo: S/"<<totalFinal<<endl;
     }
-    cout<<"-----------------------------"<<endl;
+    cambiarColor(15);
+    cout<<"------------------------------------------------------------------"<<endl;
     cout<<"Gracias por su visita, "<<nombreCliente<<"!"<<endl;
     cout<<"De las manos del chef, nacen obras maestras que conquistan el alma."<<endl;
-    cout<<"-----------------------------"<<endl;
+    cout<<"------------------------------------------------------------------"<<endl;
 }
+
 // funcion del dia 1
 void dia1(const string& nombreCliente) {
     const int MAX_ENTRADAS = 3;
@@ -224,7 +244,7 @@ void dia1(const string& nombreCliente) {
         "Picante a la tacnenia",
         "Chuleta frita"
     };
-    float preciosPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {12.0, 12.0, 25.0, 258.0};
+    float preciosPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {12.0, 12.0, 25.0, 25.0};
       string menuPostres[MAX_POSTRES] = {
         "Gelatina",
         "Tarta de pera"
@@ -435,7 +455,7 @@ void dia3(const string& nombreCliente) {
         "Chuletas de Cerdo Al Horno  ",
         "Arroz Chaufa De Pescado",    
         "Bistec Encebollado",
-        "Ceviche de champiñones"
+        "Ceviche de champiÃ±ones"
     };
     float preciosPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {20.0, 25.0, 20.0, 15.0};
 

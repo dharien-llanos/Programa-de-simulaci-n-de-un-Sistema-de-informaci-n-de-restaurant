@@ -216,7 +216,7 @@ void dia1(const string& nombreCliente) {
         "Caldo de pollo",
         "Causa de pollo"
     };
-    float preciosEntradas[MAX_ENTRADAS] = {25.0, 20.0, 30.0};
+    float preciosEntradas[MAX_ENTRADAS] = {15.0, 8.0, 20.0};
 
     string menuPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {
         "Arroz con pollo",
@@ -224,12 +224,12 @@ void dia1(const string& nombreCliente) {
         "Picante a la tacnenia",
         "Chuleta frita"
     };
-    float preciosPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {45.0, 35.0, 50.0, 40.0};
+    float preciosPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {12.0, 12.0, 25.0, 258.0};
       string menuPostres[MAX_POSTRES] = {
         "Gelatina",
         "Tarta de pera"
     };
-    float preciosPostres[MAX_POSTRES] = {12.0, 15.0};
+    float preciosPostres[MAX_POSTRES] = {4.0, 5.0};
     
     Orden ordenes[MAX_ORDENES];
     int numOrdenes = 0;
@@ -325,7 +325,7 @@ void dia2(const string& nombreCliente) {
         "Sopa de vegetales",
         "Tiradito de pescado"
     };
-    float preciosEntradas[MAX_ENTRADAS] = {22.0, 18.0, 28.0};
+    float preciosEntradas[MAX_ENTRADAS] = {5.0, 10.0, 15.0};
 
     string menuPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {
         "Pescado a la plancha",
@@ -333,13 +333,13 @@ void dia2(const string& nombreCliente) {
         "Pasta alfredo",
         "Ensalada cesar"
     };
-    float preciosPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {38.0, 36.0, 32.0, 28.0};
+    float preciosPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {20.0, 30.0, 15.0, 5.0};
 
     string menuPostres[MAX_POSTRES] = {
         "Flan",
         "Tarta de manzana"
     };
-    float preciosPostres[MAX_POSTRES] = {12.0, 15.0};
+    float preciosPostres[MAX_POSTRES] = {5.0, 5.0};
 
     Orden ordenes[MAX_ORDENES];
     int numOrdenes = 0;
@@ -429,7 +429,7 @@ void dia3(const string& nombreCliente) {
         "Palta rellena",
         "Choclo revuelto con Huevos"
     };
-    float preciosEntradas[MAX_ENTRADAS] = {25.0, 22.0, 30.0};
+    float preciosEntradas[MAX_ENTRADAS] = {5.0, 15.0, 15.0};
 
     string menuPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {
         "Chuletas de Cerdo Al Horno  ",
@@ -437,13 +437,13 @@ void dia3(const string& nombreCliente) {
         "Bistec Encebollado",
         "Ceviche de champiñones"
     };
-    float preciosPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {40.0, 36.0, 34.0, 23.0};
+    float preciosPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {20.0, 25.0, 20.0, 15.0};
 
     string menuPostres[MAX_POSTRES] = {
         "Tarta de frambuesa y queso crema",
         "Tarta de chocolate"
     };
-    float preciosPostres[MAX_POSTRES] = {15.0, 10.0};
+    float preciosPostres[MAX_POSTRES] = {10.0, 7.0};
 
     Orden ordenes[MAX_ORDENES];
     int numOrdenes = 0;
@@ -533,7 +533,7 @@ void dia4(const string& nombreCliente) {
         "Salpicon De Pollo",
         "Cauche Con Queso"
     };
-    float preciosEntradas[MAX_ENTRADAS] = {25.0, 20.0, 17.0};
+    float preciosEntradas[MAX_ENTRADAS] = {20.0, 15.0, 12.0};
 
     string menuPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {
         "Pollo broaster con arroz  ",
@@ -541,13 +541,13 @@ void dia4(const string& nombreCliente) {
         "Pollo a la chiclayana",
         "Locro de gallina"
     };
-    float preciosPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {25.0, 18.0, 20.0, 12.0};
+    float preciosPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {20.0, 18.0, 20.0, 12.0};
 
     string menuPostres[MAX_POSTRES] = {
         "Crema de queso y fresa",
         "Crema de chocolate y moka"
     };
-    float preciosPostres[MAX_POSTRES] = {14.0, 16.0};
+    float preciosPostres[MAX_POSTRES] = {7.0, 8.0};
 
     Orden ordenes[MAX_ORDENES];
     int numOrdenes = 0;
@@ -638,7 +638,7 @@ void dia5(const string& nombreCliente) {
         "causa de atun",
         "ensalada de aguacate"
     };
-    float preciosEntradas[MAX_ENTRADAS] = {30.0, 25.0, 35.0};
+    float preciosEntradas[MAX_ENTRADAS] = {20.0, 15.0, 20.0};
 
     string menuPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {
         "aji de pollo ",
@@ -646,7 +646,7 @@ void dia5(const string& nombreCliente) {
         "saltado de pollo",
         "tallarines verdes"
     };
-    float preciosPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {55.0, 50.0, 60.0, 45.0};
+    float preciosPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {30.0, 35.0, 15.0, 20.0};
 
     string menuPostres[MAX_POSTRES] = {
         "queque con frutas",
@@ -748,7 +748,7 @@ void dia6(const string& nombreCliente) {
         "sopa de pollo",
         "ceviche de pescado"
     };
-    float preciosEntradas[MAX_ENTRADAS]={20.0, 18.0, 25.0};
+    float preciosEntradas[MAX_ENTRADAS]={20.0, 18.0, 15.0};
 
     string menuPlatosPrincipales[MAX_PLATOS_PRINCIPALES]={
         "bistec a lo pobre",
@@ -756,14 +756,14 @@ void dia6(const string& nombreCliente) {
         "arroz chaufa",
         "carapulcra"
     };
-    float preciosPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {40.0,35.0,30.0,38.0};
+    float preciosPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {25.0,30.0,25.0,15.0};
 
     string menuPostres[MAX_POSTRES] = {
         " Queque de naranja",
         "Crema volteada",
         "Arros con leche"
     };
-    float preciosPostres[MAX_POSTRES] = {10.0, 8.0, 12.0};
+    float preciosPostres[MAX_POSTRES] = {7.0, 8.0, 6.0};
 
     Orden ordenes[MAX_ORDENES];
     int numOrdenes=0;
@@ -854,7 +854,7 @@ void dia7(const string& nombreCliente) {
         "anticuchos",
         "rocoto relleno"
     };
-    float preciosEntradas[MAX_ENTRADAS] = {30.0, 25.0, 35.0};
+    float preciosEntradas[MAX_ENTRADAS] = {20.0, 15.0, 25.0};
 
     string menuPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {
         "seco de cabrito",
@@ -862,20 +862,20 @@ void dia7(const string& nombreCliente) {
         "pachamanca",
         "arroz chaufa"
     };
-    float preciosPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {55.0, 50.0, 60.0, 45.0};
+    float preciosPlatosPrincipales[MAX_PLATOS_PRINCIPALES] = {30.0, 35.0, 40.0, 25.0};
 
     string menuPostres[MAX_POSTRES] = {
         "mazamorra morada",
         "suspiro a la limenia"
     };
-    float preciosPostres[MAX_POSTRES] = {10.0, 12.0};
+    float preciosPostres[MAX_POSTRES] = {8.0, 9.0};
 
     string menuBebidas[MAX_BEBIDAS] = {
         "pisco sour",
         "cerveza artesanal",
         "jugo de maracuya"
     };
-    float preciosBebidas[MAX_BEBIDAS] = {15.0, 18.0, 10.0};
+    float preciosBebidas[MAX_BEBIDAS] = {7.0, 10.0, 10.0};
 
     Orden ordenes[MAX_ORDENES];
     int numOrdenes=0;

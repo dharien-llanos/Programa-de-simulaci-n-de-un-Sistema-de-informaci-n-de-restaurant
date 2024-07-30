@@ -12,7 +12,16 @@ void limpiarPantalla() {
     #endif
 }
 
+void imprimirFechaActual() {
+    time_t tiempoActual = time(0);
+    tm* tiempoLocal = localtime(&tiempoActual);
 
+    const char* diasDeLaSemana[] = {"Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"};
+    const char* mesesDelAnio[] = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+
+    cout << diasDeLaSemana[tiempoLocal->tm_wday] << "  "  << tiempoLocal->tm_mday << " de " 
+              << mesesDelAnio[tiempoLocal->tm_mon] << " de " << (tiempoLocal->tm_year + 1900) << endl;
+}
 // esta funcion sirve para detectar el dia actual     luis huacca
 int detectarDia() {
     time_t tiempoActual=time(0);
@@ -70,6 +79,13 @@ void mostrarMenuPrincipal() {
     cambiarColor(7);
 }
 
+void menu0() {
+    cout << " -------------------------------------------------------------------------------" << endl;
+    cout << "     <<<<<<<<<<        LA CASONA UNIVERSITARIA RESTAURANT          >>>>>>>>>>     " << endl;
+    cout << " ------------------------------------------------------------------------------- " << endl;
+    cout << "  MENU DE HOY :                                                         " << endl;
+    imprimirFechaActual();
+}
 
 void menu1() {
     cambiarColor(6); 
@@ -89,15 +105,31 @@ void menu1() {
 
 void menu2() {
     cambiarColor(6);
-    cout<<"      -------------------------------------------------------------------------------" << endl;
+    cout<<" -------------------------------------------------------------------------------" << endl;
     cout<<"          <<<<<<<<<<            RINCONCITO TACNENIO RESTAURANT          >>>>>>>>>>     " << endl;
-    cout<<"      ------------------------------------------------------------------------------- " << endl;
+    cout<<"  ------------------------------------------------------------------------------- " << endl;
     cout<<"       LOS PLATOS SELECCIONADOS SON :                                                         " << endl;
     cambiarColor(7); 
 }
 
+void menu3() {
+	cambiarColor(6);
+    cout << " -------------------------------------------------------------------------------" << endl;
+    cout << "    <<<<<<<<<<        LA CASONA UNIVERSITARIA RESTAURANT         >>>>>>>>>>     " << endl;
+    cout << " ------------------------------------------------------------------------------- " << endl;
+    cout<<"       DESEA ELIMINAR UN PLATO DE SU PEDIDO (PRESIONE 1):                                                         " << endl;
+}
 
-    void linea_horizontal() {
+void menu4() {
+	cambiarColor(6);
+    cout << " -------------------------------------------------------------------------------" << endl;
+    cout << "     <<<<<<<<<<           LA CASONA UNIVERSITARIA RESTAURANT     >>>>>>>>>>     " << endl;
+    cout << " ------------------------------------------------------------------------------- " << endl;
+    cout << " BOLETA DEL RINCONCITO TACNENIO RESTAURANT:                                     " << endl;
+    imprimirFechaActual();
+}
+
+void linea_horizontal() {
     char linea_horizontal = static_cast<char>(196);
 
     int longitud = 85;
@@ -175,7 +207,6 @@ void borrarOrden(Orden ordenes[], int& numOrdenes, int indice) {
 void generarBoleta(const string& nombreCliente, Orden ordenes[], int numOrdenes) {
     float suma=0;
     float descuento=0;
-    cout << "\n---- BOLETA ----"<<endl;
     cout << "Nombre del Cliente: "<<nombreCliente<<endl;
     if (numOrdenes == 0) {
         cout << "No ha seleccionado ningun plato"<<endl;
@@ -187,7 +218,7 @@ void generarBoleta(const string& nombreCliente, Orden ordenes[], int numOrdenes)
         }
         cout<<"Total de consumo: S/"<<suma<<endl;
         if (numOrdenes > 10) {
-            cout<<"Descuento 20% al total de consumo"<<endl;
+            cout<<"Descuento 20% "<<endl;
             descuento = suma * 0.20;
         } else if (numOrdenes > 5) {
             cout<<"Descuento 10% al total de consumo"<<endl;
@@ -199,10 +230,10 @@ void generarBoleta(const string& nombreCliente, Orden ordenes[], int numOrdenes)
         float totalFinal=suma-descuento;
         cout<<"Total con descuento del consumo: S/"<<totalFinal<<endl;
     }
-    cout<<"-----------------------------"<<endl;
-    cout<<"Gracias por su visita, "<<nombreCliente<<"!"<<endl;
+    cout<<"----------------------------------------------------------------------"<<endl;
+    cout<<"  * * * * * * * * * Gracias por su visita * * * * * * * * *  * "<<nombreCliente<<"!"<<endl;
     cout<<"De las manos del chef, nacen obras maestras que conquistan el alma."<<endl;
-    cout<<"-----------------------------"<<endl;
+    cout<<"----------------------------------------------------------------------"<<endl;
 }
 // funcion del dia 1
 void dia1(const string& nombreCliente) {
@@ -244,11 +275,9 @@ void dia1(const string& nombreCliente) {
         switch (opcion) {
             case 1:
 				limpiarPantalla();
-                
+                menu0();
                 mostrarCarta("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS);
-               
                 mostrarCarta("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES);
-               
                 mostrarCarta("Postres", menuPostres, preciosPostres, MAX_POSTRES);
                 cout<<"\nPresione Enter para continuar...";
                 cin.ignore();
@@ -284,9 +313,10 @@ void dia1(const string& nombreCliente) {
               
             case 4:
     limpiarPantalla();
+    menu3();
     if (numOrdenes > 0) {
         int indice;
-        cout<<"ingrese 1 si desea eliminar un plato  : ";
+        cout<<" Confirme si desea eliminar : ";
         cin>>indice;
         borrarOrden(ordenes, numOrdenes, indice - 1);
     } else {
@@ -298,6 +328,7 @@ void dia1(const string& nombreCliente) {
     break;
             case 5:
             	limpiarPantalla();
+            	menu4();
                 generarBoleta(nombreCliente,ordenes,numOrdenes);
                 opcion=6;
                 break;
@@ -353,11 +384,9 @@ void dia2(const string& nombreCliente) {
         switch (opcion) {
             case 1:
 				limpiarPantalla();
-             
+                menu0();
                 mostrarCarta("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS);
-              
                 mostrarCarta("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES);
-    
                 mostrarCarta("Postres", menuPostres, preciosPostres, MAX_POSTRES);
                 cout<<"\nPresione Enter para continuar...";
                 cin.ignore();
@@ -392,9 +421,10 @@ void dia2(const string& nombreCliente) {
                
             case 4:
     limpiarPantalla();
+    menu3();
     if (numOrdenes > 0) {
         int indice;
-        cout<<"ingrese 1 si desea eliminar un plato  : ";
+        cout<<" Confirme si desea eliminar : ";
         cin>>indice;
         borrarOrden(ordenes, numOrdenes, indice - 1);
     } else {
@@ -406,6 +436,7 @@ void dia2(const string& nombreCliente) {
     break;
             case 5:
             	limpiarPantalla();
+                menu4();
                 generarBoleta(nombreCliente,ordenes,numOrdenes);
                 opcion=6;
                 break;
@@ -457,11 +488,9 @@ void dia3(const string& nombreCliente) {
         switch (opcion) {
             case 1:
 				limpiarPantalla();
-               
+                menu0();
                 mostrarCarta("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS);
-               
                 mostrarCarta("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES);
-                
                 mostrarCarta("Postres", menuPostres, preciosPostres, MAX_POSTRES);
                 cout<<"\nPresione Enter para continuar...";
                 cin.ignore();
@@ -495,9 +524,10 @@ void dia3(const string& nombreCliente) {
                
             case 4:
     limpiarPantalla();
+    menu3();
     if (numOrdenes > 0) {
         int indice;
-        cout<<"ingrese 1 si desea eliminar un plato  : ";
+        cout<<" Confirme si desea eliminar : ";
         cin>>indice;
         borrarOrden(ordenes, numOrdenes, indice - 1);
     } else {
@@ -509,6 +539,7 @@ void dia3(const string& nombreCliente) {
     break;
             case 5:
             	limpiarPantalla();
+                menu4();
                 generarBoleta(nombreCliente,ordenes,numOrdenes);
                 opcion=6;
                 break;
@@ -561,11 +592,9 @@ void dia4(const string& nombreCliente) {
         switch (opcion) {
             case 1:
 				limpiarPantalla();
-              
+                menu0();
                 mostrarCarta("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS);
-               
                 mostrarCarta("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES);
-                
                 mostrarCarta("Postres", menuPostres, preciosPostres, MAX_POSTRES);
                 cout<<"\nPresione Enter para continuar...";
                 cin.ignore();
@@ -599,9 +628,10 @@ void dia4(const string& nombreCliente) {
                
             case 4:
     limpiarPantalla();
+    menu3();
     if (numOrdenes > 0) {
         int indice;
-        cout<<"ingrese 1 si desea eliminar un plato  : ";
+        cout<<" Confirme si desea eliminar : ";
         cin>>indice;
         borrarOrden(ordenes, numOrdenes, indice - 1);
     } else {
@@ -613,6 +643,7 @@ void dia4(const string& nombreCliente) {
     break;
             case 5:
             	limpiarPantalla();
+                menu4();
                 generarBoleta(nombreCliente,ordenes,numOrdenes);
                 opcion=6;
                 break;
@@ -669,11 +700,9 @@ void dia5(const string& nombreCliente) {
         switch (opcion) {
             case 1:
 				limpiarPantalla();
-                
+                menu0();
                 mostrarCarta("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS);
-                
                 mostrarCarta("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES);
-            
                 mostrarCarta("Postres", menuPostres, preciosPostres, MAX_POSTRES);
                 cout<<"\nPresione Enter para continuar...";
                 cin.ignore();
@@ -708,9 +737,10 @@ void dia5(const string& nombreCliente) {
             
             	case 4:
     limpiarPantalla();
+    menu3();
     if (numOrdenes > 0) {
         int indice;
-        cout<<"ingrese 1 si desea eliminar un plato  : ";
+        cout<<" Confirme si desea eliminar : ";
         cin>>indice;
         borrarOrden(ordenes, numOrdenes, indice - 1);
     } else {
@@ -722,6 +752,7 @@ void dia5(const string& nombreCliente) {
     break;
             case 5:
             	limpiarPantalla();
+                menu4();
                 generarBoleta(nombreCliente,ordenes,numOrdenes);
                 opcion=6;
                 break;
@@ -777,11 +808,9 @@ void dia6(const string& nombreCliente) {
         switch (opcion) {
             case 1:
 				limpiarPantalla();
-              
+                menu0();
                 mostrarCarta("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS);
-               
                 mostrarCarta("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES);
-               
                 mostrarCarta("Postres", menuPostres, preciosPostres, MAX_POSTRES);
                 cout<<"\nPresione Enter para continuar...";
                 cin.ignore();
@@ -816,9 +845,10 @@ void dia6(const string& nombreCliente) {
             case 4:
             	
     limpiarPantalla();
+    menu3();
     if (numOrdenes > 0) {
         int indice;
-        cout<<"ingrese 1 si desea eliminar un plato  : ";
+        cout<<" Confirme si desea eliminar : ";
         cin>>indice;
         borrarOrden(ordenes, numOrdenes, indice - 1);
     } else {
@@ -830,6 +860,7 @@ void dia6(const string& nombreCliente) {
     break;
             case 5:
             	limpiarPantalla();
+                menu4();
                 generarBoleta(nombreCliente,ordenes,numOrdenes);
                 opcion=6;
                 break;
@@ -889,11 +920,9 @@ void dia7(const string& nombreCliente) {
         switch (opcion) {
             case 1:
 				limpiarPantalla();
-                
+                menu0();
                 mostrarCarta("Entradas", menuEntradas, preciosEntradas, MAX_ENTRADAS);
-                
                 mostrarCarta("Platos Principales", menuPlatosPrincipales, preciosPlatosPrincipales, MAX_PLATOS_PRINCIPALES);
-            
                 mostrarCarta("Postres", menuPostres, preciosPostres, MAX_POSTRES);
                 cout<<"\nPresione Enter para continuar...";
                 cin.ignore();
@@ -930,9 +959,10 @@ void dia7(const string& nombreCliente) {
             
             	case 4:
     limpiarPantalla();
+    menu3();
     if (numOrdenes > 0) {
         int indice;
-        cout<<"ingrese 1 si desea eliminar un plato  : ";
+        cout<<" Confirme si desea eliminar : ";
         cin>>indice;
         borrarOrden(ordenes, numOrdenes, indice - 1);
     } else {
@@ -944,6 +974,7 @@ void dia7(const string& nombreCliente) {
     break;
             case 5:
             	limpiarPantalla();
+                menu4();
                 generarBoleta(nombreCliente,ordenes,numOrdenes);
                 opcion=6;
                 break;
